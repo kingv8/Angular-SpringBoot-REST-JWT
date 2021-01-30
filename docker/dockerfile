@@ -3,10 +3,14 @@ FROM java:8
 # 设置环境变量
 ENV TZ=Asia/Shanghai
 # RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-# 运行过程中创建一个mall-tiny-docker-file.jar文件
-RUN bash -c 'touch /angular-springboot-rest-jwt.jar'
-# ADD arthas-boot.jar /arthas-boot.jar
-ENTRYPOINT java  -Xms512m   -Xmx1024m  -Xmn256m   -Xss256k   -XX:SurvivorRatio=8  -jar  /usr/share/myservice/myservice.jar
-EXPOSE 8088
+# 将当前目录下的jar包复制到docker容器的/目录下
+ADD app-1.0.0.jar /app-1.0.0.jar
+# 运行过程中创建一个app-1.0.0.jar文件
+RUN bash -c 'touch /app-1.0.0.jar'
+# 声明服务运行在9119端口
+EXPOSE 9119
+# 指定docker容器启动时运行jar包
+ENTRYPOINT ["java", "-Xms512m", "-Xmx1024m", "-Xmn256m", "-Xss256k", "-XX:SurvivorRatio=8", "-jar", "/app-1.0.0.jar"]
+
 
 
