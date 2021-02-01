@@ -96,8 +96,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <imageName>wxc/angular-springboot-rest-jwt:0.0.1</imageName>
-                    <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+                    <imageName>wuxinchaowxc/angular-springboot-rest-jwt:0.0.1</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <!--<resource>
                             <targetPath>/</targetPath>
