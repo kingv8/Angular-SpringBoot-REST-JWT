@@ -99,7 +99,7 @@
                 <configuration>
                     <imageName>wuxinchaowxc/angular-springboot-rest-jwt:0.0.1</imageName>
                     <dockerDirectory>${project.basedir}/docker</dockerDirectory>
-                    <skipDockerBuild>false</skipDockerBuild>
+                    <skipDockerBuild>true</skipDockerBuild>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
