@@ -85,25 +85,20 @@
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
-                <executions>
+                <!--<executions>
                     <execution>
                         <id>build-image</id>
                         <phase>package</phase>
                         <goals>
-                            <!--如果注释掉goals内代码,package打包时就不会构建docker镜像-->
-                            <goal>build</goal>
+                            &lt;!&ndash;如果注释掉goals内代码,package打包时就不会构建docker镜像&ndash;&gt;
+                            &lt;!&ndash;<goal>build</goal>&ndash;&gt;
                         </goals>
                     </execution>
-                </executions>
+                </executions>-->
                 <configuration>
                     <imageName>wuxinchaowxc/angular-springboot-rest-jwt:0.0.1</imageName>
-                    <dockerDirectory>${project.basedir}/docker</dockerDirectory>
+                    <!--<dockerDirectory>src/main/docker</dockerDirectory>-->
                     <resources>
-                        <!--<resource>
-                            <targetPath>/</targetPath>
-                            <directory>bin</directory>
-                            <include>run.sh</include>
-                        </resource>-->
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
