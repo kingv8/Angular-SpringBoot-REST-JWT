@@ -91,7 +91,7 @@
                         <phase>package</phase>
                         <goals>
                             <!--如果注释掉goals内代码,package打包时就不会构建docker镜像-->
-                            <!--<goal>build</goal>-->
+                            <goal>build</goal>
                         </goals>
                     </execution>
                 </executions>
