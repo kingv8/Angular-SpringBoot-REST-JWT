@@ -1,17 +1,22 @@
 # 该镜像需要依赖的基础镜像
-FROM java:8
+FROM adoptopenjdk/openjdk8
+#FROM openjdk:8-jdk-alpine
+#RUN apk update
+#RUN apk add --no-cache tini
+#FROM java:8
+#RUN apt-get install openjdk-8-jdk openjdk-8-dbg
 # 设置环境变量
 ENV TZ=Asia/Shanghai
-VOLUME /tmp
 # RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # 将当前目录下的jar包复制到docker容器的/目录下
 ADD app-1.0.0.jar /app-1.0.0.jar
 # 运行过程中创建一个app-1.0.0.jar文件
-RUN bash -c 'touch /app-1.0.0.jar'
+#RUN bash -c 'touch /app-1.0.0.jar'
 # 声明服务运行在9119端口
 EXPOSE 9119
 # 指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-Xms512m", "-Xmx1024m", "-Xmn256m", "-Xss256k", "-XX:SurvivorRatio=8", "-jar", "app-1.0.0.jar"]
+#ENTRYPOINT ["/sbin/tini", "--", "java", "-Xms512m", "-Xmx1024m", "-Xmn256m", "-Xss256k", "-XX:SurvivorRatio=8", "-jar", "/app-1.0.0.jar"]
+ENTRYPOINT ["java", "-Xms512m", "-Xmx1024m", "-Xmn256m", "-Xss256k", "-XX:SurvivorRatio=8", "-jar", "/app-1.0.0.jar"]
 
 
 
